@@ -2,6 +2,17 @@ const user = require("../models/user_model")
 const bcrypt = require("bcrypt")
 const saltRounds = 10
 
+
+exports.register_view = async (req, res) => {
+    let get_data = await user.find({
+        $expr: {
+            $lt: [{ $size: "$referral_ids" }, 8]
+        }, status: 1
+    }).select({ _id: 1, name: 1 })
+
+    res.render('register', { layout: 'layouts/auth_layout', users: get_data  }); // Render registration page with users
+  }
+
 exports.create_user = async (req, res) => {
     try {
         let error_exist = throw_error(req)
@@ -28,6 +39,7 @@ exports.create_user = async (req, res) => {
     }
 }
 
+/* This api functionality has been used inside register_view function.
 exports.get_users_for_referral = async (req, res) => {
     try {
         let get_data = await users.find({
@@ -42,3 +54,5 @@ exports.get_users_for_referral = async (req, res) => {
         return res.status(500).send({ status: 500, message: "Internal Server Error", error: err.message })
     }
 }
+
+*/

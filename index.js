@@ -2,14 +2,23 @@ const express = require("express")
 const mongoose = require("mongoose")
 const socketIo = require("socket.io")
 const http = require("http")
-const path = require("path")
+// const path = require("path")
 const multer = require("multer")
 require("dotenv").config()
 const app = express()
 const user_routes = require("./routes/user")
 const purchase_routes = require("./routes/purchase")
 require("./helper/globalHelper")
-app.use(express.static(path.resolve("./public")))
+const expressLayouts = require("express-ejs-layouts");
+
+app.use(express.static("public"));
+
+app.use(expressLayouts);
+
+app.set("layout", "./layouts/auth_layout");
+
+app.set("view engine", "ejs");
+
 app.use(multer().any())
 app.use(express.json())
 

@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+h3 {
+    font-size: 24px;
+    color: #000000;
+    font-weight: 500;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1D1D1F;;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none !important;
+}
+
+
+.form-email {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 10px;
+}
+
+/* #goBack h3 {
+  font-size: 24px;
+  font-weight: 00;
+  color: #000000;
+} */
+#form-password,
+#form-confirm-password {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666666;
+    margin-top: 10px;
+}
+
+#login-btn {
+    /* width:425px; */
+    height: 48px;
+    margin: 15px auto;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 700;
+    top: 373px;
+    left: 427px;
+    background: #1764d8;
+    border: 1px solid #1764d8;
+    border-radius: 8px;
+    /* box-shadow: 6px 8px 10px -6px #000; */
+}
+
+#bottom_p {
+    margin-top: 20px;
+}
+
+#btn-login {
+    /* width:425px; */
+    height: 48px;
+    margin-top: 14px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 700;
+    top: 373px;
+    left: 427px;
+    background: #1764d8;
+    border: 1px solid #1764d8;
+    border-radius: 8px;
+    /* box-shadow: 6px 8px 10px -6px #000; */
+}
+
+#btn-code {
+    /* width:425px; */
+    height: 48px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    top: 373px;
+    left: 427px;
+    background: #ffffff;
+    border: 1px solid #1764d8;
+    border-radius: 8px;
+    color: #666666;
+    /* box-shadow: 6px 8px 10px -6px #000; */
+}
+
+
+input[type="email"] {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    height: 48px;
+}
+
+input[type="password"] {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    height: 48px;
+}
+
+input[type="number"] {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    height: 48px;
+}
+
+input::placeholder {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+
+
+
