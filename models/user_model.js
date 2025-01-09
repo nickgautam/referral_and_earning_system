@@ -4,10 +4,11 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 const user_schema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
+    password: { type: String, required: true },
     parent_id: { type: ObjectId, default: null },
     referral_ids: { type: [ObjectId] , default : []},
     status: { type: Number, default: 1 }, //1-Active user, 2-Inactive user
-    // earnings: { type: Number, default: 0 }
+    earnings: { type: Number, default: 0 }
 }, { timestamps: true })
 
 module.exports = mongoose.model("user", user_schema)

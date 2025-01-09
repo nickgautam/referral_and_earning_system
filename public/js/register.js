@@ -1,75 +1,77 @@
+const socket = io();
+
 const register_user = () => {
+    socket.on('message', (message)=>{
+        const errorList = document.getElementById('errorMessages');
+        const li = document.createElement('li');
+        li.textContent = message;
+        errorList.appendChild(li);
+    })
+    
 
-    let base_url = BaseUrl() + `${end_point}`
-
-    $.ajax({
-        type: "POST",
-        url: `${base_url}`,
-        contentType: 'application/json',
-        processData: true,
-        data: JSON.stringify(body),
-        success: function (result) {
-            // console.log(result, "result")
-            if (result.status) {
-                switch (process) {
-                    case 2:
-                        // console.log(result.data.type)
-                        if (result.data.type == 'success') {
-                            window.location = BaseUrl() + `email_actions/${result.token}`
-                        }
-                        else {
-                            $("#invalid_otp").removeClass("d-none")
-                        }
-                        break;
-                    case 3:
-                        $("#invalid_otp").addClass('d-none')
-                        $('#otp1').val('');
-                        $('#otp2').val('');
-                        $('#otp3').val('');
-                        $('#otp4').val('');
-                        $('#verifyOtpButton').prop('disabled', true);
-                        break
-                    default:
-                        break
-                }
-
-            }
-        },
-        error: error => {
-            alert(error.responseJSON.message)
-        }
+    // Listen for registration success
+    socket.on('registrationSuccess', (message) => {
+        alert(message);
+        // window.location.href = '/login';  // Redirect to login page after successful registration
     });
 
-    // // Handle registration process form submit
-    // document.getElementById('register-form').addEventListener('submit', async function (e) {
-    //     e.preventDefault();
-    //     console.log("trigerred")
-    //     const input_obj = {}
-    //     input_obj['name'] = document.getElementById('name').value;
-    //     input_obj['email'] = document.getElementById('email').value;
-    //     input_obj['password'] = document.getElementById('password').value;
-    //     const parent_id = document.getElementById('referral').value;
-    //     if (parent_id) {
-    //         input_obj['parent_id']
-    //     }
+    // Listen for registration error
+    socket.on('registrationError', (message) => {
+        alert(message);
+    });
+    // return
+    let referralSelect = document.getElementById('referral').value;
 
-    //     fetch('/create_user', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(input_obj)
-    //     }).then(response => {
-    //         if (!response.ok) {
-    //             return response.json().then(errData => {
-    //                 throw errData.errors;
-    //             });
-    //         }
-    //         return response.json(); // Success
-    //     })
-    //     .then(data => {
-    //             console.log('Success:', data);
-    //         })
-    //     .catch(errors => {
-    //             console.log(errors)
-    //         });
-    // })
+    console.log(referralSelect, "referralSelect")
+
+        let url = BaseUrl() + `create_user`
+
+        let input_obj = {}
+        input_obj['name'] = document.getElementById('name').value;
+        input_obj['email'] = document.getElementById('email').value;
+        input_obj['password'] = document.getElementById('password').value;
+        let parent_id = referralSelect;
+        if (parent_id) {
+            input_obj['parent_id'] = parent_id
+        }
+
+        console.log(input_obj, "input")
+        $.ajax({
+            type: "POST",
+            url: `${url}`,
+            contentType: 'application/json',
+            processData: true,
+            data: JSON.stringify(input_obj),
+            success: function (result) {
+                console.log(result, "result")
+                if (result.status==201) {
+                    alert(result.message)
+                    window.location = BaseUrl() + `login`
+                }
+            },
+            error: function (error) {
+                console.log(error)
+                if (error.responseJSON) {
+                    // socket.emit('validationError', error.responseJSON.message);
+                    alert(error.responseJSON.message)
+                }
+            }
+        });
+
 }
+
+document.getElementById('register-form').addEventListener('submit', (e)=>{
+    e.preventDefault()
+    register_user()
+})
+
+// socket.on('validationError', (errors) => {
+//     const errorList = document.getElementById('errorMessages');
+//     errorList.innerHTML = '';  // Clear previous errors
+
+//     errors.forEach((error) => {
+//         const li = document.createElement('li');
+//         li.textContent = error;
+//         errorList.appendChild(li);
+//     });
+// });

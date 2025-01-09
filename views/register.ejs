@@ -1,55 +1,82 @@
-<!-- <link rel="stylesheet" href="css/login.css" /> -->
+<link rel="stylesheet" href="css/common.css" />
 
-<div class="container mt-5">
-    <form id="register-form">
-        <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" required>
-            <div id="invalid-value" class="text-danger"></div>
-        </div>
+<div class="main-div">
+    <div class="form-div">
+        <h2>Register Now</h2>
+        <form id="register-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+                <div id="invalid-name" class="text-danger"></div>
+            </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" required>
-            <!-- <div id="invalid-value" class="text-danger"></div> -->
-        </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+                <!-- <div id="invalid-value" class="text-danger"></div> -->
+            </div>
 
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" required>
-            <!-- <div id="invalid-value" class="text-danger"></div> -->
-        </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required autocomplete>
+                <!-- <div id="invalid-value" class="text-danger"></div> -->
+            </div>
 
-        <!-- Referral Section (Hidden by default) -->
-        <div class="mb-3" id="referral-section" style="display: none;">
-            <label for="referral" class="form-label">Choose Referral</label>
-            <select class="form-select" id="referral">
-                <option value="">Select Referral</option>
-                <% users.forEach(user=> { %>
-                    <option value="<%= user._id %>">
-                        <%= user.name %>
-                    </option>
-                    <% }) %>
-            </select>
-        </div>
+            <!-- Referral Section (Hidden by default) -->
+            <div class="mb-3" id="referral-section" style="display: none;">
+                <label for="referral" class="form-label">Choose Referral</label>
+                <select class="form-select" id="referral">
+                    <option value="">Select Referral</option>
+                    <% if(users.length) { %>
+                        <% users.forEach(user => { %>
+                            <option value="<%= user._id ? user._id : '' %>">
+                                 <%= user.name ? user.name : "" %>
+                            </option>
+                        <% }) %>
+                    <% } %>
+                </select>
+            </div>
+            
 
-        <button type="submit" class="btn btn-primary" onclick="register_user()">Register</button>
-    </form>
-    <p class="mt-3"><strong class="text-danger">Note: </strong> If any user chooses you as a referral person, you will
-        get direct and indirect profit on his purchase above
-        1000rs.</p>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <p class="" style="margin-top: 10px;"><strong class="text-danger">Note: </strong> If any user chooses you as a
+            referral person, you
+            will
+            get direct and indirect profit on his purchase above
+            1000rs.</p>
+    </div>
 </div>
 
-<footer>
-</footer>
+<ul id="errorMessages"></ul>
+
 
 <script>
     // Below referral section will only visible if any user exist inside database. 
     if (<%= users.length %> > 0) {
         document.getElementById('referral-section').style.display = 'block';
+        const selectElement = document.getElementById("referral");
+        selectElement.required = true;
     }
-
 </script>
 
-<scripts src="js/common.js"></script>
-<scripts src="js/register.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<!-- <script>
+    const socket = io()
+    document.getElementById('name').addEventListener("keydown", (e)=>{
+        const name = document.getElementById('name').value
+        // e.prevantDefault()
+        socket.emit("user-message", name)
+    })
+
+    socket.on('message', (message)=>{
+        const errorList = document.getElementById('errorMessages');
+        const li = document.createElement('li');
+        li.textContent = message;
+        errorList.appendChild(li);
+    })
+
+</script> -->
+
+<script src="js/common.js"></script>
+<script src="js/register.js"></script>

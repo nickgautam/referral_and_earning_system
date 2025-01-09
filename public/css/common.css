@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #a9aeb3ec;
+}
+
+h3 {
+    font-size: 24px;
+    color: #000000;
+    font-weight: 500;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1d1d1f;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none !important;
+}
+
+
+.form-label {
+    /* font-size: 1.25rem; Adjust this value as needed */
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 10px;
+}
+/* #goBack h3 {
+  font-size: 24px;
+  font-weight: 00;
+  color: #000000;
+} */
+#name,
+#email,
+#password {
+    font-size: 14px;
+    /* font-weight: 600; */
+    color: #666666;
+    margin-top: 10px;
+}
+#purchase-btn {
+    margin-top: 15px;
+}
+
+
+#bottom_p {
+    margin-top: 20px;
+}
+
+#notifications {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    z-index: 1000;
+  }
+  .notification {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .error {
+    background-color: #f44336;
+  }
+
+input[type="text"] {
+    height: 42px;
+    border-radius: 7px;
+    font-size: 15px;
+}
+input[type="number"] {
+    height: 42px;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+input[type="email"] {
+    height: 42px;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+input[type="password"] {
+    height: 42px;
+    border-radius: 7px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+input[type="hidden"] {
+    height: 42px;
+    border-radius: 7px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+input[type="submit"] {
+    height: 42px;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+input::placeholder {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+.main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    /* Full viewport height */
+    margin: 0;
+    /* Remove default margin */
+}
+
+.main-div .form-div {
+    width: 500px;
+    border: 2px solid lightgrey;
+    background-color: #fff;
+    border-radius: 18px;
+    padding: 1rem 2rem;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+    /* Optional: set a min height to prevent the form from collapsing */
+    min-height: 350px;
+}
+
+.btn {
+    margin-top: 10px;
+    height: 42px;
+    width: 100%; 
+    border-radius: 8px;
+  }

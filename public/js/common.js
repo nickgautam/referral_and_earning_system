@@ -1,7 +1,8 @@
 const BaseUrl = () => {
-    const domain = window.location.hostname.split(".").slice(-2)[1];
+    const domain = window.location.hostname;
+    console.log(window.location.hostname)
 
     if (domain === "localhost") {
-        return "http://wocollp.localhost:3000/";
+        return "http://localhost:3000/";
     }
 }

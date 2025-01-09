@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/css/common.css"/>
+
+<div class="main-div">
+    <div class="form-div">
+        <h2>Purchase</h2>
+        <form id="purchase-form">
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" class="form-control" id="amount" required>
+                <!-- <div id="invalid-value" class="text-danger"></div> -->
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Buyer Name</label>
+                <input type="text" class="form-control" id="name" value="<%=user.name%>" disabled>
+                <!-- <div id="invalid-value" class="text-danger"></div> -->
+            </div>
+            <input type="hidden" id="buyer_id" value=<%=user._id%>>
+            <button type="submit" class="btn btn-primary" id="purchase-btn">Purchase</button>
+        </form>
+    </div>
+</div>
+
+  <!-- Notifications container -->
+  <div id="notifications"></div>
+
+<!-- <script src="/socket.io/socket.io.js"></script> -->
+
+<script src="/js/common.js"></script>
+<script src="/js/purchase.js"></script>
