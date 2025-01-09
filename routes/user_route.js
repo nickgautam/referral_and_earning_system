@@ -22,7 +22,7 @@ body("email").trim().notEmpty().withMessage("email is required")
 body("password").trim().notEmpty().withMessage("password is required"),
 user_login)
 
-// router.get("/get_users_for_referral", get_users_for_referral) // this api functionality has been shift inside register api
+router.get("/get_users_for_referral", get_users_for_referral) // this api functionality has been shift inside register api
 
 
 module.exports = router;

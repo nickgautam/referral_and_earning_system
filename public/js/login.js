@@ -31,7 +31,7 @@ const login = () => {
         input_obj['email'] = document.getElementById('email').value;
         input_obj['password'] = document.getElementById('password').value;
 
-        console.log(input_obj, "input")
+        // console.log(input_obj, "input")
         $.ajax({
             type: "POST",
             url: `${url}`,
@@ -39,17 +39,17 @@ const login = () => {
             processData: true,
             data: JSON.stringify(input_obj),
             success: function (result) {
-                console.log(result, "result")
+                // console.log(result, "result")
                 if (result.status==200) {
-                    alert(result.message)
+                    showNotification(result.message)
                     window.location = BaseUrl() + `purchase/${result.token}`
                 }
             },
             error: function (error) {
-                console.log(error)
+                // console.log(error)
                 if (error.responseJSON) {
                     // socket.emit('registrationError', error.responseJSON.errors);
-                    alert(error.responseJSON.message)
+                    showNotification(error.responseJSON.message, true)
                 }
             }
         });

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/common.css"/>
+<link rel="stylesheet" href="/css/common.css" />
 
 <div class="main-div">
     <div class="form-div">
@@ -18,11 +18,13 @@
             <input type="hidden" id="buyer_id" value=<%=user._id%>>
             <button type="submit" class="btn btn-primary" id="purchase-btn">Purchase</button>
         </form>
+        <!-- View Earnings Button -->
+        <button type="button" class="btn btn-success m-5" id="view-earnings-btn" onclick="view_earnings()">View Earnings</button>
     </div>
 </div>
 
-  <!-- Notifications container -->
-  <div id="notifications"></div>
+<!-- Notifications container -->
+<div id="notifications"></div>
 
 <!-- <script src="/socket.io/socket.io.js"></script> -->
 

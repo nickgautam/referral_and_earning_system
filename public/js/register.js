@@ -1,28 +1,28 @@
-const socket = io();
+// const socket = io();
 
 const register_user = () => {
-    socket.on('message', (message)=>{
-        const errorList = document.getElementById('errorMessages');
-        const li = document.createElement('li');
-        li.textContent = message;
-        errorList.appendChild(li);
-    })
+    // socket.on('message', (message)=>{
+    //     const errorList = document.getElementById('errorMessages');
+    //     const li = document.createElement('li');
+    //     li.textContent = message;
+    //     errorList.appendChild(li);
+    // })
     
 
     // Listen for registration success
-    socket.on('registrationSuccess', (message) => {
-        alert(message);
+    // socket.on('registrationSuccess', (message) => {
+    //     alert(message);
         // window.location.href = '/login';  // Redirect to login page after successful registration
-    });
+    // });
 
     // Listen for registration error
-    socket.on('registrationError', (message) => {
-        alert(message);
-    });
+    // socket.on('registrationError', (message) => {
+    //     alert(message);
+    // });
     // return
     let referralSelect = document.getElementById('referral').value;
 
-    console.log(referralSelect, "referralSelect")
+    // console.log(referralSelect, "referralSelect")
 
         let url = BaseUrl() + `create_user`
 
@@ -35,7 +35,7 @@ const register_user = () => {
             input_obj['parent_id'] = parent_id
         }
 
-        console.log(input_obj, "input")
+        // console.log(input_obj, "input")
         $.ajax({
             type: "POST",
             url: `${url}`,
@@ -43,9 +43,9 @@ const register_user = () => {
             processData: true,
             data: JSON.stringify(input_obj),
             success: function (result) {
-                console.log(result, "result")
+                // console.log(result, "result")
                 if (result.status==201) {
-                    alert(result.message)
+                    showNotification(result.message)
                     window.location = BaseUrl() + `login`
                 }
             },
@@ -53,7 +53,7 @@ const register_user = () => {
                 console.log(error)
                 if (error.responseJSON) {
                     // socket.emit('validationError', error.responseJSON.message);
-                    alert(error.responseJSON.message)
+                    showNotification(error.responseJSON.message, true)
                 }
             }
         });

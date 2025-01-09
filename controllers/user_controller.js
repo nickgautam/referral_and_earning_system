@@ -79,7 +79,7 @@ exports.user_login = async (req, res) => {
     }
 }
 
-/* This api functionality has been used inside register_view function.
+// This api functionality has been used inside register_view function.
 exports.get_users_for_referral = async (req, res) => {
     try {
         let get_data = await users.find({
@@ -94,5 +94,3 @@ exports.get_users_for_referral = async (req, res) => {
         return res.status(500).send({ status: 500, message: "Internal Server Error", error: err.message })
     }
 }
-
-*/

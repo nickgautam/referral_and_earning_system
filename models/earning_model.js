@@ -3,7 +3,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 const earning_schema = new mongoose.Schema({
     user_id: { type: ObjectId, ref: "user", required: true},
-    buyer_id: { type: ObjectId, ref: "user", default: null },
+    buyer_id: { type: ObjectId, ref: "user", required: true },
     direct_profit: { type: Number, default: 0 },
     indirect_profit: { type: Number, default: 0 },
 }, { timestamps: true })
