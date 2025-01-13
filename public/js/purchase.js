@@ -71,5 +71,5 @@ document.getElementById('purchase-form').addEventListener('submit', (e)=>{
 
 const view_earnings = () => {
     let user_id = document.getElementById('buyer_id').value;
-    window.location = BaseUrl() + `earnings?user_id=${user_id}`
+    window.location = BaseUrl() + `earning?user_id=${user_id}`
 }

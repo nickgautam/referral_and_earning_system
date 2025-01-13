@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="css/common.css" />
+
+
+<div class="main-div">
+    <div class="table-div">
+        <% console.log(data) %>
+        <table class="table table-hover table-style">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">S.no</th>
+                    <th scope="col">Buyer Name</th>
+                    <th scope="col">Buyer Id</th>
+                    <th scope="col">Total Direct Profit</th>
+                    <th scope="col">Total Indirect Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <% data.forEach((item, index)=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= index + 1 %>
+                        </th>
+                        <td>
+                            <%= item.buyer_details.name%>
+                        </td>
+                        <td>
+                            <%= item.buyer_details._id%>
+                        </td>
+                        <td>
+                            <%= item.total_direct_profit %>
+                        </td>
+                        <td>
+                            <%= item.total_indirect_profit %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -153,3 +153,8 @@ input::placeholder {
     width: 100%; 
     border-radius: 8px;
   }
+
+  .main-div .table-div .table-style{
+    background-color: white;
+    margin-bottom: 0;
+}
